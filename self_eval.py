@@ -93,73 +93,86 @@ def generate_evaluation_analysis(df, part_number):
         
         prompts = {
             1: f"""
-            Based on the following Strategic Objectives (SOs) and accomplishments:
+            Based strictly on the following data from the uploaded file:
             {achievements_text}
 
-            Provide a detailed evaluation for each SO category with specific justification points and individual scores.
-
-            For each SO, provide:
-            1. Bullet points of specific achievements
-            2. Concrete examples and metrics where available
-            3. Individual score based on achievement level:
-            - [5] Exceeded all objectives with demonstrable above-target results
-            - [4] Fully achieved all objectives
-            - [3] Achieved most objectives
-            - [2] Achieved some objectives
-            - [1] Achieved minimal objectives
-            - [0] No substantial achievement
+            Analyze each Strategic Objective (SO) using only the evidence provided. For each SO:
+            1. Provide up to 5 specific bullet points with concrete achievements
+            2. Include exact metrics, dates, and outcomes where available
+            3. Score based solely on documented evidence:
+            - [5] Exceeded all objectives with quantifiable above-target results
+            - [4] Fully achieved all objectives with documented evidence
+            - [3] Achieved most objectives with partial evidence
+            - [2] Limited achievement with minimal evidence
+            - [1] Minimal achievement with weak evidence
+            - [0] No documented achievement
 
             Format your response exactly as follows:
 
             SO#1 - UPSKILLING & TEAM CONTRIBUTION
             JUSTIFICATION:
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
             SCORE: [X/5]
-            REASONING: [Brief explanation of score]
+            REASONING: [Evidence-based explanation of score]
 
             SO#2 - QUALITY OUTPUT
             JUSTIFICATION:
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
             SCORE: [X/5]
-            REASONING: [Brief explanation of score]
+            REASONING: [Evidence-based explanation of score]
 
             SO#3 - JOB KNOWLEDGE
             JUSTIFICATION:
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
             SCORE: [X/5]
-            REASONING: [Brief explanation of score]
+            REASONING: [Evidence-based explanation of score]
 
             SO#4 - SPEED & ACCURACY
             JUSTIFICATION:
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
             SCORE: [X/5]
-            REASONING: [Brief explanation of score]
+            REASONING: [Evidence-based explanation of score]
 
             SO#5 - COST EFFICIENCY
             JUSTIFICATION:
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
-            • [Achievement point with specific example]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
+            • [Specific achievement with date, metric, and outcome]
             SCORE: [X/5]
-            REASONING: [Brief explanation of score]
+            REASONING: [Evidence-based explanation of score]
 
             OVERALL RATING: [Average of all SO scores]/5
             FINAL ASSESSMENT: [Brief overall performance summary]
             """,
             
             2: f"""
-            Based on the following accomplishments:
+            Based strictly on the documented evidence provided:
             {achievements_text}
 
-            Evaluate the behavioral competencies with specific examples and scoring:
+            Evaluate behavioral competencies using only concrete examples from the data. For each competency:
+            • Provide up to 5 specific instances with dates
+            • Include measurable outcomes where available
+            • Reference specific projects or initiatives
+            • Note team member or stakeholder feedback if documented
+            • Include quantifiable impact where possible
 
             PROVIDES SUPPORT AND HELP TO OTHERS
             • Help others accomplish tasks/goals
@@ -201,14 +214,21 @@ def generate_evaluation_analysis(df, part_number):
             • Promoting environmental policies
             Score: [5] Active participation, [4] Sometimes participates, [3] Willing to participate
 
-            Format response with JUSTIFICATION, SCORE, and REASONING for each competency.
+            Format response with detailed JUSTIFICATION (up to 5 bullet points), SCORE (based only on evidence), and REASONING (citing specific examples).
             """,
             
             3: f"""
-            Based on the following accomplishments:
+            Based exclusively on the documented achievements:
             {achievements_text}
 
-            Evaluate innovative contributions in these areas:
+            Evaluate innovation contributions with specific evidence:
+
+            For each category (PROCESS IMPROVEMENTS and NEW INNOVATIONS):
+            • Cite up to 5 specific implementations or proposals
+            • Include dates of implementation
+            • Document measurable impact (time saved, cost reduced, etc.)
+            • Note the scope of implementation (team/department/company)
+            • Reference any feedback or recognition received
 
             1. PROCESS IMPROVEMENTS
             Evaluation Criteria:
@@ -235,26 +255,7 @@ def generate_evaluation_analysis(df, part_number):
             [2] - Ideation
             [1] - No known instance of sharing innovation proposal
 
-            Format your response exactly as follows:
-
-            PROCESS IMPROVEMENTS
-            JUSTIFICATION:
-            • [Specific example of improvement implementation]
-            • [Evidence of process evaluation]
-            • [Impact on efficiency/effectiveness]
-            SCORE: [X/5]
-            REASONING: [Brief explanation of score based on implementation level]
-
-            NEW INNOVATIONS
-            JUSTIFICATION:
-            • [Specific example of business innovation]
-            • [Evidence of value creation]
-            • [Impact on revenue/efficiency]
-            SCORE: [X/5]
-            REASONING: [Brief explanation of score based on implementation stage]
-
-            OVERALL INNOVATION RATING: [Average of both scores]/5
-            FINAL ASSESSMENT: [Brief summary of innovation contributions and potential]
+            Format your response with detailed JUSTIFICATION (up to 5 bullet points), SCORE (based on documented evidence), and REASONING (citing specific implementations).
             """
         }
 
