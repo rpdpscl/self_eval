@@ -280,24 +280,67 @@ def generate_evaluation_analysis(df, part_number):
         sections = response.split("\n\n")
         
         for section in sections:
+            # For Part 1: Strategic Objectives
             if section.startswith("SO#"):
                 st.markdown(f"### {section.split('\n')[0]}")
                 
-                # Extract and display justification points
                 justification_start = section.find("JUSTIFICATION:") + 14
                 justification_end = section.find("SCORE:")
                 justification = section[justification_start:justification_end].strip()
                 st.markdown(justification)
                 
-                # Display score in highlighted box
+                # Updated score styling with black text
                 score_line = section[section.find("SCORE:"):].split("\n")[0]
                 st.markdown(f"""
                 <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px; width: fit-content;'>
-                <strong>{score_line}</strong>
+                <span style='color: black;'><strong>{score_line}</strong></span>
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # Display reasoning
+                reasoning_start = section.find("REASONING:") + 10
+                reasoning = section[reasoning_start:].strip()
+                st.markdown(f"**Reasoning:**\n{reasoning}")
+                
+                st.markdown("---")
+            
+            # For Part 2: Behavioral Competencies
+            elif any(section.startswith(comp) for comp in ["PROVIDES SUPPORT", "RESPECT", "TRUST", "EXCEED CUSTOMER", "INITIATIVE", "CORPORATE"]):
+                st.markdown(f"### {section.split('\n')[0]}")
+                
+                justification_start = section.find("JUSTIFICATION:") + 14
+                justification_end = section.find("SCORE:")
+                justification = section[justification_start:justification_end].strip()
+                st.markdown(justification)
+                
+                score_line = section[section.find("SCORE:"):].split("\n")[0]
+                st.markdown(f"""
+                <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px; width: fit-content;'>
+                <span style='color: black;'><strong>{score_line}</strong></span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                reasoning_start = section.find("REASONING:") + 10
+                reasoning = section[reasoning_start:].strip()
+                st.markdown(f"**Reasoning:**\n{reasoning}")
+                
+                st.markdown("---")
+            
+            # For Part 3: Innovation
+            elif section.startswith(("PROCESS IMPROVEMENTS", "NEW INNOVATIONS")):
+                st.markdown(f"### {section.split('\n')[0]}")
+                
+                justification_start = section.find("JUSTIFICATION:") + 14
+                justification_end = section.find("SCORE:")
+                justification = section[justification_start:justification_end].strip()
+                st.markdown(justification)
+                
+                score_line = section[section.find("SCORE:"):].split("\n")[0]
+                st.markdown(f"""
+                <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px; width: fit-content;'>
+                <span style='color: black;'><strong>{score_line}</strong></span>
+                </div>
+                """, unsafe_allow_html=True)
+                
                 reasoning_start = section.find("REASONING:") + 10
                 reasoning = section[reasoning_start:].strip()
                 st.markdown(f"**Reasoning:**\n{reasoning}")
